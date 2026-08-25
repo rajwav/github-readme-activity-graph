@@ -39,11 +39,12 @@ export class Fetcher {
     }
 
     private async fetch(graphQLQuery: Query): Promise<AxiosResponse<ResponseOfApi>> {
+        const token = process.env.TOKEN || process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
         return axios({
             url: 'https://api.github.com/graphql',
             method: 'POST',
             headers: {
-                Authorization: `bearer ${process.env.TOKEN}`,
+                Authorization: `bearer ${token}`,
             },
             data: graphQLQuery,
         });
