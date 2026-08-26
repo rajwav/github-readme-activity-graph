@@ -11,8 +11,11 @@ app.use(cors());
 const handlers = new Handlers();
 
 app.get('/', handlers.getRoot);
-//Get Graph
+// Get Activity Graph
 app.get('/graph', handlers.getGraph);
+
+// Get GitHub Activity Timeline
+app.get('/activity', handlers.getActivity);
 
 app.get('/data', handlers.getData);
 
